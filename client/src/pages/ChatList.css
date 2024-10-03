@@ -1,0 +1,78 @@
+.chat-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.chat-list {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 2px solid #f9f9f9;  /* 하단에 #f9f9f9 색상 추가 */
+    border-bottom-color: #007bff;
+    background-color: #fff;  /* 배경색을 흰색으로 설정 */
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section {
+    flex-shrink: 0;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.chat-details {
+    flex-grow: 1;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.school-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.message {
+    color: #555;
+    font-size: 14px;
+}
+
+.time-and-delete {
+    display: flex;
+    align-items: center;
+}
+
+.time {
+    font-size: 12px;
+    color: #888;
+    margin-right: 10px;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
