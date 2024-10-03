@@ -1,0 +1,121 @@
+.write-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    border-radius: 10px; /* 컨테이너에 약간의 둥근 모서리 추가 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 컨테이너에 그림자 추가 */
+}
+
+.write-header {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* 텍스트 색상을 조금 더 명확하게 */
+}
+
+.anonymous-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 10px; /* 약간의 여백 추가 */
+}
+
+.anonymous-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+}
+
+.anonymous-description {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.board-label, .title-label, .content-label, .image-label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+.board-select, .post-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* 박스 크기를 일정하게 유지 */
+    transition: border-color 0.3s, box-shadow 0.3s; /* 포커스 애니메이션 */
+}
+
+.board-select:focus, .post-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.image-input {
+    margin-top: 5px;
+}
+
+.image-preview {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap; /* 이미지들이 한 줄을 넘으면 아래로 자동 배치 */
+}
+
+.image-preview img, .image-preview video {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 미리보기 이미지/비디오에 그림자 추가 */
+}
+
+.back-button {
+    font-size: 16px;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #007bff;
+    transition: color 0.3s; /* 색상 전환 애니메이션 추가 */
+}
+
+.back-button:hover {
+    color: #0056b3;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff5c5c;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.submit-button:hover {
+    background-color: #ff3b3b;
+    transform: translateY(-2px); /* 버튼이 약간 위로 올라가는 효과 */
+}
+
+.submit-button:active {
+    background-color: #e04343;
+    transform: translateY(0); /* 클릭 시 원래 자리로 복귀 */
+}
+
+.submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

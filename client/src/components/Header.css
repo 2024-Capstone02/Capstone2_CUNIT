@@ -1,13 +1,17 @@
 /* 헤더 컨테이너 */
 .header-container {
+    position: fixed; /* 헤더를 고정하기 위해 fixed로 설정 */
+    top: 0; /* 화면의 상단에 고정 */
+    left: 0; /* 화면의 왼쪽에 고정 */
+    width: 100%; /* 전체 가로폭 사용 */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
     height: 60px;
     padding: 0 10px;
     background-color: #f8f8f8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* 다른 요소들보다 앞에 오도록 z-index 설정 */
 }
 
 /* 뒤로 가기 버튼 스타일 */
@@ -36,4 +40,36 @@
     align-items: center;
     justify-content: center;
     flex-grow: 1;  /* 가운데로 배치되도록 설정 */
+}
+
+/* 사이드 메뉴 */
+.side-menu {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 60px; /* 헤더 아래에 위치하도록 설정 */
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+}
+
+.side-menu.open {
+    display: block;
+}
+
+.region-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.region-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.region-item:hover {
+    background-color: #f0f0f0;
 }

@@ -1,9 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import './ChatList.css';
 import Header from '../components/Header';
+import ManIcon from '../assets/images/ManIcon.png';
+import GirlIcon from '../assets/images/GirlIcon.png';
+import ChatIcon from '../assets/images/ChatIcon.png';
 
-const ChatList = ({ chats = [], onDeleteChat }) => {  // chats의 기본값을 빈 배열로 설정
+const ChatList = ({chats = [], onDeleteChat}) => {  // chats의 기본값을 빈 배열로 설정
     const navigate = useNavigate();
 
     // 채팅방 클릭 시 해당 채팅방으로 이동하는 함수
@@ -13,7 +16,7 @@ const ChatList = ({ chats = [], onDeleteChat }) => {  // chats의 기본값을 �
 
     return (
         <div className="chat-list-container">
-            <Header title="채팅" />
+            <Header title="채팅"/>
             <div className="chat-list">
                 {chats.length > 0 ? (
                     chats.map(chat => (
@@ -23,7 +26,7 @@ const ChatList = ({ chats = [], onDeleteChat }) => {  // chats의 기본값을 �
                             onClick={() => handleChatClick(chat.id)}
                         >
                             <div className="profile-section">
-                                <img src={chat.profileImage} alt="profile" className="profile-image" />
+                                <img src={ManIcon} alt="profile" className="profile-image"/>
                             </div>
                             <div className="chat-details">
                                 <div className="school-name">{chat.schoolName}</div>
@@ -50,5 +53,5 @@ const ChatList = ({ chats = [], onDeleteChat }) => {  // chats의 기본값을 �
         </div>
     );
 };
-
+// <img src={chat.profileImage} alt="profile" className="profile-image" /> 는 채팅방 프로필 사용자간에 프로필 가져오기.
 export default ChatList;

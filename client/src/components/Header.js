@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Header.css'; // 스타일링을 위한 CSS 파일
+import '../components/Header.css'; // CSS 파일 임포트
 
 function Header({ title, imageSrc }) {
     const navigate = useNavigate();
@@ -12,7 +12,10 @@ function Header({ title, imageSrc }) {
 
     // 메뉴 버튼 클릭 핸들러 (필요시 사용)
     const handleMenuClick = () => {
-        console.log("메뉴 버튼 클릭됨");
+        const sideMenu = document.querySelector('.side-menu');
+        if (sideMenu) {
+            sideMenu.classList.toggle('open'); // 메뉴 열기/닫기
+        }
     };
 
     return (
@@ -22,7 +25,16 @@ function Header({ title, imageSrc }) {
                 {imageSrc && <img src={imageSrc} alt="Icon" className="header-icon" />} {/* 이미지 경로를 props로 받아서 렌더링 */}
                 <h1 className="header-title">{title}</h1>
             </div>
-            <button className="menu-button" onClick={handleMenuClick}>메뉴</button>
+            <div className="menu-container">
+                <button className="menu-button" onClick={handleMenuClick}>메뉴</button>
+                <div className="side-menu">
+                    <ul className="region-list">
+                        <li className="region-item">대전</li>
+                        <li className="region-item">세종</li>
+                        <li className="region-item">충남</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     );
 }

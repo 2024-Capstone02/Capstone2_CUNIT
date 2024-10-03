@@ -1,5 +1,11 @@
-/* 메인 페이지 컨테이너 */
+/* 공통 컨테이너 스타일 */
+.container,
 .main-page-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
     position: relative;
     width: 100%;
     height: 100vh;
@@ -7,6 +13,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/* 헤더 스타일 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 메뉴 버튼 스타일 */
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
 }
 
 /* 뒤로 가기 버튼 스타일 */
@@ -22,17 +53,79 @@
     border-radius: 5px;
 }
 
-/* 메뉴 버튼 스타일 */
-.menu-button {
-    position: absolute;
-    top: 20px;
+/* 지역별 게시판 스타일 */
+.region-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.region-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.region-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* 게시글 리스트 스타일 */
+.post-list {
+    margin-top: 20px;
+}
+
+.post-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+/* 글쓰기 버튼 스타일 */
+.write-button {
+    position: fixed;
+    bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    font-size: 14px;
-    background-color: #f0f0f0;
+    background-color: #ff5c5c;
+    color: white;
     border: none;
+    border-radius: 50px;
+    font-size: 18px;
     cursor: pointer;
+}
+
+.write-button:hover {
+    background-color: #ff3b3b;
+}
+
+/* 글쓰기 폼 스타일 */
+.post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.submit-button {
+    padding: 10px 15px;
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #ff3b3b;
 }
 
 /* 메인 콘텐츠 스타일 */
