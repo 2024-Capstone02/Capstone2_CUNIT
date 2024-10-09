@@ -4,8 +4,8 @@ import './MatchingPage.css';
 import { useNavigate } from 'react-router-dom';
 
 // 이미지 파일 불러오기
-import ManIcon from '../assets/images/ManIcon.png';
-import GirlIcon from '../assets/images/GirlIcon.png';
+import ManIcon from '../images/ManIcon.png';
+import GirlIcon from '../images/GirlIcon.png';
 
 function MatchingPage({ onMatch }) {
     const [isMatching, setIsMatching] = useState(false);

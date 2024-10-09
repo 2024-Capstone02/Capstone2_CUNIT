@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../components/Header.css'; // CSS 파일 임포트
+import './Header.css'; // CSS 파일 임포트
 
 function Header({ title, imageSrc }) {
     const navigate = useNavigate();

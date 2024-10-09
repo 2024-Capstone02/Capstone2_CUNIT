@@ -5,10 +5,10 @@ import MainBoard from './pages/MainBoard';
 import WritePost from './pages/WritePost';
 import EditPost from './pages/EditPost';
 import RegionSpecificBoard from './pages/RegionSpecificBoard';
-import ChatList from './pages/ChatList';
-import Chating from './pages/Chating';
-import MatchingPage from './pages/MatchingPage';
-import MainPage from './pages/MainPage';
+import ChatList from './front/chat/ChatList';
+import Chating from './front/chat/Chating';
+import MatchingPage from './front/chat/MatchingPage';
+import MainPage from './front/chat/MainPage';
 import PostDetail from './pages/PostDetail'; // PostDetail 컴포넌트 추가
 
 function App() {

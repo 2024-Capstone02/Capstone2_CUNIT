@@ -3,9 +3,9 @@ import './Chating.css';
 import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';  // Socket.IO 클라이언트 임포트
 import Header from '../components/Header';  // 경로 수정
-import ManIcon from '../assets/images/ManIcon.png';
-import GirlIcon from '../assets/images/GirlIcon.png';
-import ChatIcon from '../assets/images/ChatIcon.png';
+import ManIcon from '../images/ManIcon.png';
+import GirlIcon from '../images/GirlIcon.png';
+import ChatIcon from '../images/ChatIcon.png';
 
 const socket = io('http://localhost:3001');  // Socket.IO 서버에 연결
 

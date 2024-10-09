@@ -2,9 +2,9 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import './ChatList.css';
 import Header from '../components/Header';
-import ManIcon from '../assets/images/ManIcon.png';
-import GirlIcon from '../assets/images/GirlIcon.png';
-import ChatIcon from '../assets/images/ChatIcon.png';
+import ManIcon from '../images/ManIcon.png';
+import GirlIcon from '../images/GirlIcon.png';
+import ChatIcon from '../images/ChatIcon.png';
 
 const ChatList = ({chats = [], onDeleteChat}) => {  // chats의 기본값을 빈 배열로 설정
     const navigate = useNavigate();
