@@ -16,7 +16,7 @@ const ChatList = ({chats = [], onDeleteChat}) => {  // chats의 기본값을 빈
 
     return (
         <div className="chat-list-container">
-            <Header title="채팅"/>
+            <Header title="채팅 목록"/>
             <div className="chat-list">
                 {chats.length > 0 ? (
                     chats.map(chat => (

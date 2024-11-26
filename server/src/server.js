@@ -20,6 +20,9 @@ let posts = [
     { id: 2, title: '두 번째 게시글', content: '두 번째 게시글 내용', author: 'user2', comments: [] }
 ];
 
+// 메시지 관리 배열
+let messages = []; // 서버에서 관리하는 메시지 배열
+
 // 게시글 API - 목록 가져오기
 app.get('/api/posts', (req, res) => {
     res.json(posts);
@@ -102,17 +105,23 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('사용자가 연결되었습니다.');
 
-    // 클라이언트에서 메시지 수신
     socket.on('sendMessage', (message) => {
         console.log('받은 메시지:', message);
-        // 모든 클라이언트에게 메시지 전송
-        io.emit('receiveMessage', message);
+        const newMessage = { id: Date.now(), ...message }; // id 부여
+        messages.push(newMessage);
+        io.emit('receiveMessage', newMessage); // 모든 클라이언트에 메시지 전송
     });
 
-    // 클라이언트에서 파일 수신
-    socket.on('sendFile', (fileData) => {
-        console.log('받은 파일:', fileData);
-        io.emit('receiveFile', fileData);
+    socket.on('deleteMessage', (messageId) => {
+        console.log(`deleteMessage 이벤트 수신됨, ID: ${messageId}`);
+        const messageToDelete = messages.find(msg => msg.id === messageId);
+        if (messageToDelete) {
+            console.log('삭제된 메시지:', JSON.stringify(messageToDelete, null, 2));
+            messages = messages.filter(msg => msg.id !== messageId);
+            io.emit('messageDeleted', messageId); // 클라이언트에 메시지 삭제 알림
+        } else {
+            console.log(`메시지 ID ${messageId}를 찾을 수 없습니다.`);
+        }
     });
 
     socket.on('disconnect', () => {

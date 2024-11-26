@@ -6,8 +6,10 @@
 
 .chat-room-content {
     flex-grow: 1;
-    padding: 15px;
     overflow-y: auto;
+    padding-top: 60px; /* 헤더 높이만큼 상단 여백 추가 */
+    padding-bottom: 10px; /* 하단 여백 추가 */
+    box-sizing: border-box;
 }
 
 .message {

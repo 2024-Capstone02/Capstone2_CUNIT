@@ -1,0 +1,96 @@
+/* 전체 컨텐츠 정렬 */
+.home-content {
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    align-items: flex-start; /* 상단 정렬 */
+    padding: 20px;
+    background-color: #FFFFFF;
+    height: 100vh; /* 전체 높이 설정 */
+    padding-top: 70px; /* Header의 높이만큼 여백 추가 */
+}
+
+/* 프로필 컨테이너 */
+.profile-container {
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    align-items: flex-start; /* 상단 정렬 */
+    background-color: #f1f3f5;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 프로필 섹션 */
+.profile-section {
+    text-align: center; /* 텍스트는 가운데 정렬 */
+}
+
+/* 프로필 이미지 */
+.profile-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 사용자 정보 */
+.user-info {
+    margin-bottom: 15px;
+}
+
+.user-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.user-id {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* 버튼 좌우 정렬 */
+    gap: 10px;
+}
+
+/* 버튼 스타일 (특정 범위 안으로 제한) */
+.profile-container button {
+    flex: 1; /* 버튼 크기 균등 분배 */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* 버튼 호버 스타일 (특정 범위 안으로 제한) */
+.profile-container button:hover {
+    background-color: #0056b3;
+}
+
+/* 각각의 버튼 색상 */
+.profile-container .info-button {
+    background-color: #0072BB;
+}
+
+.profile-container .info-button:hover {
+    background-color: #0073CF;
+}
+
+.profile-container .logout-button {
+    background-color: #0073CF;
+}
+
+.profile-container .logout-button:hover {
+    background-color: #0056b3;
+}

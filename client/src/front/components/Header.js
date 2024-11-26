@@ -1,42 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Header.css'; // CSS 파일 임포트
+import './Header.css';
+import userIcon from '../images/user.png';
+import logoIcon from '../images/logo.png';
+import bellIcon from '../images/bell.png';
 
-function Header({ title, imageSrc }) {
+const Header = () => {
+    const [isBoardOpen, setIsBoardOpen] = useState(false);
+    const [isChatOpen, setIsChatOpen] = useState(false); // 채팅 메뉴 상태 추가
     const navigate = useNavigate();
 
-    // 뒤로가기 버튼 핸들러
-    const handleBackClick = () => {
-        navigate(-1); // 이전 페이지로 이동
+    // 특정 게시판으로 이동하는 함수
+    const handleBoardNavigation = (path) => {
+        navigate(path);
+        setIsBoardOpen(false); // 게시판 메뉴 닫기
     };
 
-    // 메뉴 버튼 클릭 핸들러 (필요시 사용)
-    const handleMenuClick = () => {
-        const sideMenu = document.querySelector('.side-menu');
-        if (sideMenu) {
-            sideMenu.classList.toggle('open'); // 메뉴 열기/닫기
-        }
+    // 특정 채팅 페이지로 이동하는 함수
+    const handleChatNavigation = (path) => {
+        navigate(path);
+        setIsChatOpen(false); // 채팅 메뉴 닫기
+    };
+
+    const handleBellClick = () => {
+        navigate('/notifications'); // 알림 페이지로 이동
+    };
+
+    const handleUserClick = () => {
+        navigate('/profile'); // 프로필 페이지로 이동
     };
 
     return (
-        <div className="header-container">
-            <button className="back-button" onClick={handleBackClick}>뒤로가기</button>
-            <div className="title-container">
-                {imageSrc && <img src={imageSrc} alt="Icon" className="header-icon" />} {/* 이미지 경로를 props로 받아서 렌더링 */}
-                <h1 className="header-title">{title}</h1>
+        <header className="home-header">
+            <div className="home-logo" onClick={() => navigate('/home')} style={{cursor: 'pointer'}}>
+                <img src={logoIcon} alt="Logo Icon" className="logo-icon"/>
+                <span>CUNIT</span>
             </div>
-            <div className="menu-container">
-                <button className="menu-button" onClick={handleMenuClick}>메뉴</button>
-                <div className="side-menu">
-                    <ul className="region-list">
-                        <li className="region-item">대전</li>
-                        <li className="region-item">세종</li>
-                        <li className="region-item">충남</li>
-                    </ul>
+            <nav className="home-nav-menu">
+
+                {/* 게시판 메뉴 */}
+                <div
+                    className="dropdown-container"
+                    onMouseEnter={() => setIsBoardOpen(true)}
+                    onMouseLeave={() => setIsBoardOpen(false)}
+                >
+                    <a href="#게시판">게시판</a>
+                    {isBoardOpen && (
+                        <div className="board-menu-horizontal">
+                            <div className="board-item" onClick={() => handleBoardNavigation('/HomeBoard')}>통합</div>
+                            <div className="board-item" onClick={() => handleBoardNavigation('/ChungBoard')}>충남</div>
+                            <div className="board-item" onClick={() => handleBoardNavigation('/DaeBoard')}>대전</div>
+                            <div className="board-item" onClick={() => handleBoardNavigation('/SeBoard')}>세종</div>
+                        </div>
+                    )}
                 </div>
+                <a href="#캘린더">캘린더</a>
+                <a href="#홍보">홍보</a>
+                {/* 채팅 메뉴 */}
+                <div
+                    className="dropdown-container"
+                    onMouseEnter={() => setIsChatOpen(true)}
+                    onMouseLeave={() => setIsChatOpen(false)}
+                >
+                    <a href="#채팅">채팅</a>
+                    {isChatOpen && (
+                        <div className="board-menu-horizontal">
+                            <div className="board-item" onClick={() => handleChatNavigation('/chatlist')}>채팅 리스트</div>
+                            <div className="board-item" onClick={() => handleChatNavigation('/matching')}>1:1 매칭</div>
+                        </div>
+                    )}
+                </div>
+            </nav>
+            <div className="home-icons">
+                <img
+                    src={bellIcon}
+                    alt="Bell Icon"
+                    className="home-icon home-bell-icon"
+                    onClick={handleBellClick}
+                    style={{cursor: 'pointer'}}
+                />
+                <img
+                    src={userIcon}
+                    alt="User Icon"
+                    className="home-icon home-user-icon"
+                    onClick={handleUserClick}
+                    style={{cursor: 'pointer'}}
+                />
+
             </div>
-        </div>
+        </header>
     );
-}
+};
 
 export default Header;

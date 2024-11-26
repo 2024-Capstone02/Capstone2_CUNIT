@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainBoard from './pages/MainBoard';
-import WritePost from './pages/WritePost';
-import EditPost from './pages/EditPost';
-import RegionSpecificBoard from './pages/RegionSpecificBoard';
+// import WritePost from './pages/WritePost';
+// import EditPost from './pages/EditPost';
+// import RegionSpecificBoard from './pages/RegionSpecificBoard';
 import ChatList from './front/chat/ChatList';
 import Chating from './front/chat/Chating';
 import MatchingPage from './front/chat/MatchingPage';
-import MainPage from './front/chat/MainPage';
-import PostDetail from './pages/PostDetail'; // PostDetail 컴포넌트 추가
+import MainPage from './front/chat/Home';
+import Home from './front/chat/Home';
+// import PostDetail from './pages/PostDetail'; // PostDetail 컴포넌트 추가
 
 function App() {
     const [posts, setPosts] = useState([]);
@@ -60,8 +60,8 @@ function App() {
     const [chats, setChats] = useState([{
         id: 1,
         schoolName: '배재대학교',
-        lastMessage: '안녕하세요',
-        timeAgo: '방금',
+        lastMessage: '...', // 아직 미정. 입력된 최근 데이터를 미리보여주는 기능 포함 할 예정 ***
+        timeAgo: '방금',  // 마지막으로 보낸 시간 부터 지금까지 몇 몇분, 몇시간 지났는지 보여줄 예정. ***
         profileImage: 'https://example.com/path/to/image1.png',
     }]);
 
@@ -76,14 +76,18 @@ function App() {
                 <Route path="/chatlist" element={<ChatList chats={chats} onDeleteChat={deleteChat} />} />
                 <Route path="/chat/:chatId" element={<Chating chats={chats} />} />
                 <Route path="/matching" element={<MatchingPage />} />
-                <Route path="/mainboard" element={<MainBoard posts={posts} deletePost={deletePost} />} />
-                <Route path="/write" element={<WritePost addPost={addPost} />} />
-                <Route path="/edit/:postId" element={<EditPost posts={posts} updatePost={updatePost} deletePost={deletePost} />} />
-                <Route path="/region/:region" element={<RegionSpecificBoard posts={posts} />} />
-                <Route path="/post/:postId" element={<PostDetail posts={posts} addComment={() => {}} deletePost={deletePost} currentUserId={1} />} /> {/* PostDetail 라우팅 추가 */}
+                <Route path="/Home" element={<Home />} />
             </Routes>
         </Router>
     );
 }
 
 export default App;
+
+/*
+<Route path="/mainboard" element={<MainBoard posts={posts} deletePost={deletePost} />} />
+<Route path="/write" element={<WritePost addPost={addPost} />} />
+<Route path="/edit/:postId" element={<EditPost posts={posts} updatePost={updatePost} deletePost={deletePost} />} />
+<Route path="/region/:region" element={<RegionSpecificBoard posts={posts} />} />
+<Route path="/post/:postId" element={<PostDetail posts={posts} addComment={() => {}} deletePost={deletePost} currentUserId={1} />} /> {/* PostDetail 라우팅 추가 }
+*/

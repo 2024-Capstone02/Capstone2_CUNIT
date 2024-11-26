@@ -1,75 +1,127 @@
-/* 헤더 컨테이너 */
-.header-container {
-    position: fixed; /* 헤더를 고정하기 위해 fixed로 설정 */
-    top: 0; /* 화면의 상단에 고정 */
-    left: 0; /* 화면의 왼쪽에 고정 */
-    width: 100%; /* 전체 가로폭 사용 */
+.home-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    height: 60px;
-    padding: 0 10px;
-    background-color: #f8f8f8;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* 다른 요소들보다 앞에 오도록 z-index 설정 */
-}
-
-/* 뒤로 가기 버튼 스타일 */
-.back-button {
+    align-items: center;
     padding: 10px 20px;
-    font-size: 14px;
-    background-color: #f0f0f0;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+    background-color: #fff;
+    border-bottom: 2px solid #ddd;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 메뉴 버튼 스타일 */
-.menu-button {
-    padding: 10px 20px;
-    font-size: 14px;
-    background-color: #f0f0f0;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-/* 타이틀 컨테이너 */
-.title-container {
+.home-logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-grow: 1;  /* 가운데로 배치되도록 설정 */
+    font-size: 20px;
+    font-weight: bold;
+    color: #00AFF0;
 }
 
-/* 사이드 메뉴 */
-.side-menu {
-    display: none;
-    position: absolute;
-    right: 10px;
-    top: 60px; /* 헤더 아래에 위치하도록 설정 */
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    z-index: 1000;
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
 }
 
-.side-menu.open {
-    display: block;
+.home-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.region-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.region-item {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+.home-nav-menu a {
+    margin: 0 10px;
+    font-size: 19px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
     cursor: pointer;
+    position: relative;
 }
 
-.region-item:hover {
-    background-color: #f0f0f0;
+.home-nav-menu a:hover {
+    color: #d32f2f;
+    border-bottom: 2px solid #d32f2f;
+}
+
+.home-icon {
+    width: 24px;
+    height: 24px;
+    padding: 5px; /* 아이콘 주변에 패딩 추가 */
+    box-sizing: content-box; /* 아이콘 크기가 잘리지 않도록 설정 */
+    overflow: visible; /* 요소 내용이 잘리지 않도록 설정 */
+}
+
+.home-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-right: 15px; /* 오른쪽 여백 추가 */
+    box-sizing: border-box; /* padding과 border를 포함한 크기 계산 */
+}
+
+
+/* 드롭다운 스타일 */
+.dropdown-container {
+    position: relative;
+}
+
+.board-menu-horizontal {
+    position: absolute;
+    top: 100%; /* 링크 바로 아래에 위치 */
+    left: 0;
+    display: flex;
+    background-color: #003366; /* 배경색 */
+    color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 5px; /* 둥근 모서리 */
+    min-width: 150px; /* 최소 너비 설정 */
+    max-width: 300px; /* 최대 너비 설정 */
+}
+
+.board-item {
+    margin: 0 15px;
+    padding: 5px 10px;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.board-item:hover {
+    background-color: #002244; /* hover 효과 */
+}
+
+.board-menu-horizontal .board-item {
+    white-space: nowrap; /* 메뉴 항목이 한 줄로 유지되도록 */
+}
+
+/* 서브메뉴 애니메이션 추가 */
+.board-menu-horizontal {
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .board-menu-horizontal {
+        left: auto;
+        right: 0; /* 오른쪽 정렬 */
+    }
 }

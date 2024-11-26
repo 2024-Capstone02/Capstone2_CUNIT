@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Chating.css';
 import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';  // Socket.IO 클라이언트 임포트
@@ -15,6 +15,7 @@ const Chating = ({ chats }) => {
     const [newMessage, setNewMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [attachedFile, setAttachedFile] = useState(null);
+    const messagesEndRef = useRef(null);  // 스크롤 조정을 위한 ref
 
     // 서버에서 메시지 및 파일 수신 리스너를 등록하는 useEffect
     useEffect(() => {
@@ -52,6 +53,25 @@ const Chating = ({ chats }) => {
         };
     }, []);  // 빈 배열로 설정하여 한 번만 실행
 
+    useEffect(() => {
+        // 메시지가 변경될 때마다 스크롤을 하단으로 이동
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages]);
+
+    useEffect(() => {
+        // 서버로부터 메시지 삭제 알림을 수신
+        const handleDeletedMessage = (messageId) => {
+            setMessages((prevMessages) => prevMessages.filter((m) => m.id !== messageId));
+        };
+
+        socket.on('messageDeleted', handleDeletedMessage);
+
+        return () => {
+            socket.off('messageDeleted', handleDeletedMessage);
+        };
+    }, []);
 
     if (!chat) {
         return <p>채팅방을 찾을 수 없습니다.</p>;
@@ -64,6 +84,7 @@ const Chating = ({ chats }) => {
     const handleSendMessage = () => {
         if (newMessage.trim() !== '' || attachedFile) {
             const message = {
+                id: Date.now(),  // 고유한 ID 추가 (Date.now() 사용)
                 sender: '나',
                 text: newMessage,
                 isSender: true,
@@ -82,6 +103,24 @@ const Chating = ({ chats }) => {
             setAttachedFile(null);  // 파일 상태 초기화
         }
     };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSendMessage();
+        }
+    };
+
+    const handleFileChange = (e) => {
+        setAttachedFile(e.target.files[0]);
+    };
+
+    const handleDeleteMessage = (messageId) => {
+        console.log('삭제 요청 보내기, ID:', messageId); // 디버깅용 콘솔 로그
+        socket.emit('deleteMessage', messageId);
+        setMessages(messages.filter(msg => msg.id !== messageId)); // 클라이언트에서 즉시 제거 (옵션)
+    };
+
+
 
     return (
         <div className="chat-room-container">
@@ -106,8 +145,18 @@ const Chating = ({ chats }) => {
                             )}
                         </div>
                         {message.isSender && <img src={profileImage} alt="profile" className="profile-image" />}
+                        {/* 메시지 삭제 버튼 추가 */}
+                        {message.isSender && (
+                            <button
+                                className="delete-message-button"
+                                onClick={() => handleDeleteMessage(message.id)}
+                            >
+                                삭제
+                            </button>
+                        )}
                     </div>
                 ))}
+                <div ref={messagesEndRef} />
             </div>
 
             <div className="chat-input-container">
@@ -116,11 +165,12 @@ const Chating = ({ chats }) => {
                     placeholder="메시지를 입력하세요..."
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
+                    onKeyDown={handleKeyPress}
                     className="chat-input"
                 />
                 <input
                     type="file"
-                    onChange={(e) => setAttachedFile(e.target.files[0])}
+                    onChange={handleFileChange}
                     className="file-input"
                     style={{ display: 'none' }}
                     id="file-attach"
@@ -128,6 +178,14 @@ const Chating = ({ chats }) => {
                 <label htmlFor="file-attach" className="file-attach-button">
                     파일 첨부
                 </label>
+                {attachedFile && (
+                    <div className="attached-file-info">
+                        {attachedFile.type.startsWith('image') && (
+                            <img src={URL.createObjectURL(attachedFile)} alt="attached preview" className="attached-preview" />
+                        )}
+                        <p>{attachedFile.name}</p>
+                    </div>
+                )}
                 <button onClick={handleSendMessage} className="send-button">전송</button>
             </div>
         </div>
