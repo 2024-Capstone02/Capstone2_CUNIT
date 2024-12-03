@@ -1,0 +1,256 @@
+.post-detail-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-date {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.send-message-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    /* 배경색 변화 제거 */
+    transition: none;
+}
+
+.send-message-button:hover {
+    color: #ffffff; /* 텍스트 색상 유지 */
+}
+
+.post-content {
+    margin-bottom: 20px;
+}
+
+.content-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.post-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+
+.comments-section {
+    margin-top: 30px;
+}
+
+.comment {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.comment.reply {
+    margin-left: 20px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-left: 3px solid #007bff;
+}
+
+.comment-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reply-button,
+.send-message-button {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 0.9em;
+    /* 배경색 변화 제거 */
+    transition: none;
+}
+
+.reply-button:hover,
+.send-message-button:hover {
+    color: #0056b3;
+}
+
+.add-comment {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 120px; /* 높이 약간 키움 */
+    padding: 12px; /* 텍스트와 경계 간 간격 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 1em;
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+    line-height: 1.5; /* 줄 간격 추가 */
+    margin-bottom: 10px; /* 하단 여백 추가 */
+}
+
+.comment-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.comment-actions label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em; /* 텍스트 크기 약간 축소 */
+}
+
+.comment-actions input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.comment-actions button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-actions button:hover {
+    background-color: #218838;
+}
+
+/* 쪽지 보내기 팝업 스타일 */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-inner {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* 내부 요소 좌우 정렬 개선 */
+    gap: 15px; /* 내부 요소 간 간격 추가 */
+}
+
+.popup-inner h2 {
+    margin: 0 auto; /* 제목 중앙 정렬 */
+    color: #333;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.popup-inner textarea {
+    width: 100%;
+    height: 120px; /* 높이를 약간 더 키워 시각적 균형 유지 */
+    padding: 12px; /* 내부 패딩 조정 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.popup-inner .popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* 버튼 간 간격 조정 */
+}
+
+.popup-inner .popup-buttons button {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.popup-inner .popup-buttons button:first-child {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.popup-inner .popup-buttons button:first-child:hover {
+    background-color: #0056b3;
+}
+
+.popup-inner .popup-buttons button:last-child {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.popup-inner .popup-buttons button:last-child:hover {
+    background-color: #a71d2a;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    color: #888;
+    cursor: pointer;
+}
+
+.popup-close:hover {
+    color: #555;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 5px;
+    text-align: center;
+}

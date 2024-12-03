@@ -34,7 +34,6 @@ const Header = () => {
         <header className="home-header">
             <div className="home-logo" onClick={() => navigate('/home')} style={{cursor: 'pointer'}}>
                 <img src={logoIcon} alt="Logo Icon" className="logo-icon"/>
-                <span>CUNIT</span>
             </div>
             <nav className="home-nav-menu">
 

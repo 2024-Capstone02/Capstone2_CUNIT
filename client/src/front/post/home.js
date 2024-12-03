@@ -1,7 +1,8 @@
+// 메인홈페이지(시작페이지)
 import React from 'react';
 import profileIcon from '../images/profile.png';
-import './Home.css';
-import Header from '../components/Header'; // 경로 수정
+import './home.css';
+import Header from "../components/Header";
 
 const Home = ({
                   user = {},

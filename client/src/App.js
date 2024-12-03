@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import WritePost from './pages/WritePost';
-// import EditPost from './pages/EditPost';
-// import RegionSpecificBoard from './pages/RegionSpecificBoard';
+import Home from './front/post/home';
+import ChungBoard from './front/post/ChungBoard';
+import DaeBoard from './front/post/DaeBoard';
+import HomeBoard from "./front/post/HomeBoard";
+import PostDetail from './front/post/postdetail';
+import SeBoard from "./front/post/SeBoard"
+import Write from "./front/post/write";
 import ChatList from './front/chat/ChatList';
 import Chating from './front/chat/Chating';
 import MatchingPage from './front/chat/MatchingPage';
-import MainPage from './front/chat/Home';
-import Home from './front/chat/Home';
-// import PostDetail from './pages/PostDetail'; // PostDetail 컴포넌트 추가
+import Header from "./front/components/Header";
+
+
 
 function App() {
     const [posts, setPosts] = useState([]);
@@ -71,23 +75,23 @@ function App() {
 
     return (
         <Router>
+            <Header/>
             <Routes>
-                <Route path="/" element={<MainPage />} />
+                <Route path="/Home" element={<Home />} />
+                {/*게시판페이지*/}
+                <Route path="/ChungBoard" element={<ChungBoard/>}/>
+                <Route path="/DaeBoard" element={<DaeBoard/>}/>
+                <Route path="/HomeBoard" element={<HomeBoard posts={posts} />} /> {/* posts 전달 */}
+                <Route path="/postdetail/:postId" element={<PostDetail posts={posts} />} />
+                <Route path="/SeBoard" element={<SeBoard/>}/>
+                <Route path="/write" element={<Write addPost={addPost} />} /> {/* addPost 전달 */}
+                {/*채팅페이지*/}
                 <Route path="/chatlist" element={<ChatList chats={chats} onDeleteChat={deleteChat} />} />
                 <Route path="/chat/:chatId" element={<Chating chats={chats} />} />
                 <Route path="/matching" element={<MatchingPage />} />
-                <Route path="/Home" element={<Home />} />
             </Routes>
         </Router>
     );
 }
 
 export default App;
-
-/*
-<Route path="/mainboard" element={<MainBoard posts={posts} deletePost={deletePost} />} />
-<Route path="/write" element={<WritePost addPost={addPost} />} />
-<Route path="/edit/:postId" element={<EditPost posts={posts} updatePost={updatePost} deletePost={deletePost} />} />
-<Route path="/region/:region" element={<RegionSpecificBoard posts={posts} />} />
-<Route path="/post/:postId" element={<PostDetail posts={posts} addComment={() => {}} deletePost={deletePost} currentUserId={1} />} /> {/* PostDetail 라우팅 추가 }
-*/
