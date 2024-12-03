@@ -1,0 +1,285 @@
+/* 캘린더 스타일 */
+.calendar-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    padding-top: 60px; /* 헤더 높이만큼 상단 여백 추가 */
+    padding-bottom: 10px; /* 하단 여백 추가 */
+}
+
+h1 {
+    text-align: center;
+}
+
+/* 캘린더 그리드 스타일 */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7개의 열 */
+    gap: 10px;
+    grid-template-rows: repeat(6, 120px); /* 6개의 행, 각 행 높이 120px */
+}
+
+/* 각 날짜 박스 */
+.calendar-day {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;  /* 내용이 상단부터 쌓이도록 설정 */
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 18px;
+    height: 120px;
+    position: relative; /* 텍스트를 절대 위치로 배치할 수 있게 */
+}
+
+/* 날짜 셀에 마우스 오버 시 배경색 변경 */
+.calendar-day:hover {
+    background-color: #f0f0f0;
+}
+
+/* 선택된 날짜 */
+.calendar-day.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+/* 오늘 날짜 강조 */
+.calendar-day.today {
+    font-weight: bold;
+    background-color: #ffeb3b;  /* 오늘 날짜 강조 색상 */
+}
+
+/* 날짜 숫자 오른쪽 상단에 배치 */
+.calendar-day .day-number {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 14px;  /* 작은 크기 */
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* 요일 헤더 */
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 5px 0;
+}
+
+/* 할 일 입력과 목록 섹션 */
+.task-section {
+    margin-top: 20px;
+}
+
+/* 할 일 입력 필드 */
+.task-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* 추가 버튼 */
+.add-task-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-task-button:hover {
+    background-color: #0056b3;
+}
+
+/* 할 일 목록 */
+.task-list {
+    margin-top: 20px;
+}
+
+/* 할 일 항목 */
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 할 일 아이콘 (체크박스 모양) */
+.task-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+}
+
+/* 체크박스가 클릭된 경우 체크 표시 */
+.task-icon.completed {
+    background-color: #007bff;
+}
+
+.task-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+}
+
+/* 완료된 할 일 표시 */
+.task-item.completed .task-icon::after {
+    visibility: visible;
+}
+
+/* Modal Styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.close-modal-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* 네비게이션 버튼 */
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.nav-button {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* 날짜에 할 일 표시 (작은 점) */
+.task-indicator {
+    color: green;
+    font-size: 18px;
+}
+
+/* 할 일 완료 표시 */
+.task-item.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* 완료 버튼, 삭제 버튼 */
+.add-task-button, .mark-completed-button, .delete-task-button {
+    margin: 5px;
+    cursor: pointer;
+}
+
+/* 할 일 텍스트 표시 */
+.task-text {
+    font-size: 14px;
+    color: black;
+    margin-top: 5px;  /* 날짜 아래에 적당히 간격을 두고 표시 */
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    margin-bottom: 3px; /* 할 일 간격을 좁게 설정 */
+}
+
+/* 완료된 할 일 텍스트 */
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* 빈 날짜 셀 */
+.empty {
+    background-color: #f9f9f9;
+    border: none;
+}
+
+/* 오늘 날짜 버튼 */
+.today-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.today-button:hover {
+    background-color: #45a049;
+}
+
+/* 날짜 셀 내 할 일 텍스트 */
+.calendar-day {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;ground-color: #f9f9f9;
+
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 18px;
+    height: 120px;
+    position: relative; /* 텍스트를 절대 위치로 배치할 수 있게 */
+    overflow: hidden;
+}
+
+/* 날짜 셀 내 할 일 텍스트 */
+.calendar-day .task-text {
+    position: relative;
+    bottom: 0;
+    width: 90%;
+    font-size: 12px;  /* 할 일의 텍스트 크기 */
+    text-align: left;
+    color: black;
+    overflow: hidden;
+    white-space: normal;
+    margin-top: 5px; /* 차곡차곡 쌓이도록 추가 */
+}

@@ -12,7 +12,7 @@ import ChatList from './front/chat/ChatList';
 import Chating from './front/chat/Chating';
 import MatchingPage from './front/chat/MatchingPage';
 import Header from "./front/components/Header";
-
+import Calendar_page from "./front/Calendar/Calendar_page";
 
 
 function App() {
@@ -89,6 +89,7 @@ function App() {
                 <Route path="/chatlist" element={<ChatList chats={chats} onDeleteChat={deleteChat} />} />
                 <Route path="/chat/:chatId" element={<Chating chats={chats} />} />
                 <Route path="/matching" element={<MatchingPage />} />
+                <Route path="Calendar" element={<Calendar_page/>} />
             </Routes>
         </Router>
     );
