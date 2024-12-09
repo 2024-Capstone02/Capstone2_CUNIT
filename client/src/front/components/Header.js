@@ -8,7 +8,8 @@ import bellIcon from '../images/bell.png';
 const Header = () => {
     const [isBoardOpen, setIsBoardOpen] = useState(false);
     const [isChatOpen, setIsChatOpen] = useState(false); // 채팅 메뉴 상태 추가
-    const [isCalendarOpen, setIsCalendarOpen] = useState(false); // 채팅 메뉴 상태 추가
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false); // 캘린더 메뉴 상태 추가
+    const [isEventOpen, setIsEventOpen] = useState(false); // 이벤트 메뉴 상태 추가
     const navigate = useNavigate();
 
     // 특정 게시판으로 이동하는 함수
@@ -23,9 +24,16 @@ const Header = () => {
         setIsChatOpen(false); // 채팅 메뉴 닫기
     };
 
+    // 특정 캘린더 페이지로 이동하는 함수
     const handleCalendarNavigation = (path) => {
         navigate(path);
-        setIsChatOpen(false); // 캘린더 메뉴 닫기
+        setIsCalendarOpen(false); // 캘린더 메뉴 닫기
+    };
+
+    // 특정 이벤트 페이지로 이동하는 함수
+    const handleEventNavigation = (path) => {
+        navigate(path);
+        setIsEventOpen(false); // 이벤트 메뉴 닫기
     };
 
     const handleBellClick = () => {
@@ -59,6 +67,8 @@ const Header = () => {
                         </div>
                     )}
                 </div>
+
+                {/* 캘린더 메뉴 */}
                 <div
                     className="dropdown-container"
                     onMouseEnter={() => setIsCalendarOpen(true)}
@@ -73,23 +83,39 @@ const Header = () => {
                         </div>
                     )}
                 </div>
+
+                {/* 이벤트 메뉴 */}
+                <div
+                    className="dropdown-container"
+                    onMouseEnter={() => setIsEventOpen(true)}
+                    onMouseLeave={() => setIsEventOpen(false)}
+                >
                     <a href="#홍보">홍보</a>
-                    {/* 채팅 메뉴 */}
-                    <div
-                        className="dropdown-container"
-                        onMouseEnter={() => setIsChatOpen(true)}
-                        onMouseLeave={() => setIsChatOpen(false)}
-                    >
-                        <a href="#채팅">채팅</a>
-                        {isChatOpen && (
-                            <div className="board-menu-horizontal">
-                                <div className="board-item" onClick={() => handleChatNavigation('/chatlist')}>채팅 리스트
-                                </div>
-                                <div className="board-item" onClick={() => handleChatNavigation('/matching')}>1:1 매칭
-                                </div>
+                    {isEventOpen && (
+                        <div className="board-menu-horizontal">
+                            <div className="board-item" onClick={() => handleEventNavigation('/Event_list')}>진행 이벤트
                             </div>
-                        )}
-                    </div>
+
+                        </div>
+                    )}
+                </div>
+
+                {/* 채팅 메뉴 */}
+                <div
+                    className="dropdown-container"
+                    onMouseEnter={() => setIsChatOpen(true)}
+                    onMouseLeave={() => setIsChatOpen(false)}
+                >
+                    <a href="#채팅">채팅</a>
+                    {isChatOpen && (
+                        <div className="board-menu-horizontal">
+                            <div className="board-item" onClick={() => handleChatNavigation('/chatlist')}>채팅 리스트
+                            </div>
+                            <div className="board-item" onClick={() => handleChatNavigation('/matching')}>1:1 매칭
+                            </div>
+                        </div>
+                    )}
+                </div>
             </nav>
             <div className="home-icons">
                 <img

@@ -13,6 +13,10 @@ import Chating from './front/chat/Chating';
 import MatchingPage from './front/chat/MatchingPage';
 import Header from "./front/components/Header";
 import Calendar_page from "./front/Calendar/Calendar_page";
+//event 임포트
+import Event_list from "./front/event/Event_list";
+import Event_detail from "./front/event/Event_detail";
+import Post_req from "./front/event/Post_req";
 
 
 function App() {
@@ -89,7 +93,12 @@ function App() {
                 <Route path="/chatlist" element={<ChatList chats={chats} onDeleteChat={deleteChat} />} />
                 <Route path="/chat/:chatId" element={<Chating chats={chats} />} />
                 <Route path="/matching" element={<MatchingPage />} />
+                {/*캘린더페이지*/}
                 <Route path="Calendar" element={<Calendar_page/>} />
+                {/*이벤트페이지*/}
+                <Route path="Event_list" element={<Event_list/>} />
+                <Route path="Post_req" element={<Post_req/>} />
+                <Route path="Event_detail" element={<Event_detail/>} />
             </Routes>
         </Router>
     );

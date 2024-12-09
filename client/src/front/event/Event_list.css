@@ -1,0 +1,142 @@
+
+
+.container {
+    font-family: Arial, sans-serif;
+    width: 100%; /* 전체 너비를 사용 */
+    padding: 20px; /* 패딩 추가 */
+    padding-top: 60px; /* 헤더 높이만큼 상단 여백 추가 */
+    padding-bottom: 10px; /* 하단 여백 추가 */
+
+    border-radius: 8px; /* 모서리 둥글게 */
+
+}
+
+.header {
+    margin-bottom: 20px; /* 헤더와 게시글 사이의 간격 */
+}
+
+.menu {
+    display: flex; /* 플렉스 박스를 사용하여 탭 배치 */
+    justify-content: space-around; /* 공간을 고르게 배분 */
+}
+
+.menu-item {
+    padding: 10px 20px; /* 탭의 패딩 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    transition: background-color 0.3s, color 0.3s; /* 배경색과 글자색 전환 효과 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    background-color: #f1f1f1; /* 기본 배경색 */
+    color: #333; /* 기본 글자색 */
+}
+
+.menu-item:hover {
+    background-color: #e0e0e0; /* 마우스 오버 시 배경색 변화 */
+}
+
+.menu-item.active {
+    background-color: #007bff; /* 활성화된 탭의 배경색 */
+    color: white; /* 글자색 흰색 */
+}
+
+.event-box {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+    overflow: hidden; /* 박스 밖으로 튀어나오는 요소 숨기기 */
+}
+
+.event-box:hover {
+    transform: scale(1.02); /* 마우스 오버 시 확대 효과 */
+}
+
+.image-container {
+    width: 80px; /* 고정된 너비 */
+    height: 80px; /* 고정된 높이로 정사각형 */
+    margin-right: 15px; /* 이미지와 텍스트 간격 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* 이미지 박스 크기 고정 */
+    border-radius: 5px;
+    overflow: hidden; /* 이미지 박스 밖으로 튀어나오는 요소 숨기기 */
+}
+
+.event-image {
+    width: 100%; /* 이미지가 박스 안을 가득 채움 */
+    height: 100%;
+    object-fit: cover; /* 비율 유지하면서 잘리게 */
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1; /* 텍스트가 남은 공간을 채우도록 */
+}
+
+.event-title {
+    font-size: 18px; /* 제목 글씨 크기 */
+    font-weight: bold; /* 제목 두껍게 */
+    color: #333; /* 제목 색상 */
+    margin-bottom: 5px; /* 제목과 날짜 사이의 간격 */
+}
+
+.event-date {
+    color: #777; /* 날짜 색상 */
+    font-size: 14px; /* 날짜 글씨 크기 */
+}
+
+/* 검색창 스타일 */
+.search-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-start; /* 검색창을 왼쪽에 정렬 */
+    width: 300px; /* 검색창의 너비를 300px로 제한 */
+}
+
+.search-input {
+    padding: 8px;
+    font-size: 16px;
+    width: 250px; /* 너비를 적당히 설정 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* 삭제 버튼 */
+.delete-button {
+    background-color: #dc3545; /* 붉은색 배경 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-right: 10px; /* 다른 버튼과 간격 */
+    width: fit-content; /* 버튼 너비 자동 조정 */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* 호버 시 조금 더 진한 붉은색 */
+}
+
+/* 정렬 옵션 */
+.sort-container {
+    margin-top: 20px; /* 헤더와 간격을 주기 위해 */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.sort-container select {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
